@@ -15,13 +15,24 @@ Parametric 3D-printable enclosure for a **duckyPad Pro** with an **INIU SnapGo A
 
 ## Included files
 
-- `duckypad_case_body.step` — editable solid.
-- `duckypad_case_body.stl` — full case, ready for slicing.
-- `rear_fit_test.step` / `.stl` — only the rear 20 mm of the enclosure. **Print this first.**
-- `optional_battery_lip.step` / `.stl` — low removable/friction-fit lip that helps prevent the bank from sliding out. The U-adapter itself will also retain the bank.
-- `assembly_preview.step` — case + nominal PCB + nominal P781 envelope + approximate original top plate. Reference only; do not print as one part.
-- `active_mounts.txt` — which official PCB M2 mounting holes are used by this battery placement.
-- `duckypad_ikki_powerbank_case.py` — CadQuery source. Change dimensions here and rerun to regenerate STEP/STL files.
+- `cad/duckypad_case_body.step` — editable main case solid.
+- `stl/duckypad_case_body.stl` — full case, ready for slicing.
+- `cad/rear_fit_test.step` / `stl/rear_fit_test.stl` — only the rear 20 mm of the enclosure. **Print this first.**
+- `cad/optional_battery_lip.step` / `stl/optional_battery_lip.stl` — low removable/friction-fit lip that helps prevent the bank from sliding out. The U-adapter itself will also retain the bank.
+- `cad/assembly_preview.step` — case + nominal PCB + nominal P781 envelope + approximate original top plate. Reference only; do not print as one part.
+- `cad/active_mounts.txt` — which official PCB M2 mounting holes are used by this battery placement.
+- `src/duckypad_ikki_powerbank_case.py` — CadQuery source. Change dimensions here and rerun to regenerate STEP/STL files.
+
+The STL files and `active_mounts.txt` are generated from the parametric source by the GitHub Actions workflow in `.github/workflows/build-cad.yml`.
+
+### Regenerating locally
+
+```bash
+python -m pip install -r requirements.txt
+python src/duckypad_ikki_powerbank_case.py
+```
+
+The script writes fresh STEP/STL exports into `src/duckypad_case_exports/`.
 
 ## Important v0.1 assumptions
 
